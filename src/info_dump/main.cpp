@@ -143,6 +143,10 @@ extern "C" __declspec(dllexport) void run(DWORD pid)
                 {"texture", db->texture},
                 {"animations", get_animations_as_string_map(*db)},
             };
+            if (db->animations.empty()) {
+                entities[ent.name]["tile_x"] = db->tile_x;
+                entities[ent.name]["tile_y"] = db->tile_y;
+            }
         }
 
         std::string dump = entities.dump(2);
